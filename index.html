@@ -154,7 +154,17 @@ p{margin:0}
 .tsec{margin-top:40px}
 .tsec h2{font-size:var(--fs-l);padding-bottom:8px;border-bottom:1px solid var(--ink)}
 .tsec>p{color:var(--ink-2);font-size:var(--fs-s);margin-top:10px;max-width:64ch}
-.tdrill{margin-top:14px}
+.tdrill{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.toc{margin-top:28px;padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);display:grid;gap:18px 32px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.toc>.label{grid-column:1/-1}
+.toc-h{font-weight:600;font-size:var(--fs-s);margin-bottom:6px}
+.toc-h .label{display:block;margin-bottom:2px;font-weight:500}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc li{counter-increment:toc;border-top:1px solid var(--rule)}
+.toc li button{appearance:none;background:none;border:0;padding:6px 0;width:100%;text-align:left;cursor:pointer;color:var(--ink-2);font:inherit;font-size:var(--fs-s);display:grid;grid-template-columns:1.8em 1fr;align-items:baseline}
+.toc li button::before{content:counter(toc);min-width:1.4em;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.toc li button:hover{color:var(--ink)}
+.tsec,.tpart,.toc{scroll-margin-top:84px}
 .tpart{margin-top:72px;padding-top:20px;border-top:2px solid var(--ink)}
 .tpart h2{font-size:var(--fs-xl);line-height:1.2;margin-top:6px}
 .tpart>p:last-child{color:var(--ink-2);font-size:var(--fs-s);margin-top:8px;max-width:64ch}
@@ -2297,7 +2307,7 @@ ru: {
   hintCs:'Церковнославянский перевод — по Елизаветинской Библии (1751).',
   note:'Примечание', glLemma:'Словарная форма', glMeaning:'Значение', glForm:'Форма', close:'Закрыть',
   tablesTitle:'Таблицы', tablesIntro:'Справочник к урокам: произношение и основные парадигмы. Под каждой таблицей — упражнения на формы.',
-  drill:'Тренировать формы', drillAll:'Тренировать все таблицы', lForms:'Формы', pParse:c => 'Определите форму · ' + c, pMake:'Выберите нужную форму', pronTitle:'Византийское произношение',
+  drill:'Тренировать формы', toc:'Оглавление', tocBase:'Основные таблицы', toTop:'↑ К оглавлению', drillAll:'Тренировать все таблицы', lForms:'Формы', pParse:c => 'Определите форму · ' + c, pMake:'Выберите нужную форму', pronTitle:'Византийское произношение',
   pronText:'Средневековое чтение совпадает с новогреческим: β = [v], η = ι = υ = [i], αι = [e], придыхания не звучат. Транслитерация в уроках: dh = [ð], gh = [ɣ], th = [θ], ch = [x], y = [j].',
   tLetters:'Буквы', tDiph:'Сочетания и знаки', hLetter:'Буква', hName:'Название', hSound:'Звук', hExample:'Пример', hComb:'Сочетание',
   closeLesson:'Закрыть урок', tasks:n => n + ' ' + ruPlural(n,'задание','задания','заданий'), begin:'Начать', dontKnow:'Не знаю', check:'Проверить', next2:'Дальше',
@@ -2334,7 +2344,7 @@ en: {
   hintCs:'Church Slavonic version: the Elizabeth Bible (1751).',
   note:'Note', glLemma:'Dictionary form', glMeaning:'Meaning', glForm:'Form', close:'Close',
   tablesTitle:'Tables', tablesIntro:'Reference for the lessons: pronunciation and the main paradigms. Each table has exercises on its forms.',
-  drill:'Practise the forms', drillAll:'Practise all tables', lForms:'Forms', pParse:c => 'Identify the form · ' + c, pMake:'Choose the right form', pronTitle:'Byzantine pronunciation',
+  drill:'Practise the forms', toc:'Contents', tocBase:'Core tables', toTop:'↑ Back to contents', drillAll:'Practise all tables', lForms:'Forms', pParse:c => 'Identify the form · ' + c, pMake:'Choose the right form', pronTitle:'Byzantine pronunciation',
   pronText:'Medieval reading coincides with Modern Greek: β = [v], η = ι = υ = [i], αι = [e], breathings are silent. Transliteration in the lessons: dh = [ð], gh = [ɣ], th = [θ], ch = [x], y = [j].',
   tLetters:'Letters', tDiph:'Combinations and signs', hLetter:'Letter', hName:'Name', hSound:'Sound', hExample:'Example', hComb:'Combination',
   closeLesson:'Close lesson', tasks:n => n + (n === 1 ? ' exercise' : ' exercises'), begin:'Start', dontKnow:'I don’t know', check:'Check', next2:'Continue',
@@ -2371,7 +2381,7 @@ de: {
   hintCs:'Kirchenslavische Fassung: Elisabeth-Bibel (1751).',
   note:'Anmerkung', glLemma:'Grundform', glMeaning:'Bedeutung', glForm:'Form', close:'Schließen',
   tablesTitle:'Tabellen', tablesIntro:'Nachschlageteil zu den Lektionen: Aussprache und die wichtigsten Paradigmen. Zu jeder Tabelle gibt es Formenübungen.',
-  drill:'Formen üben', drillAll:'Alle Tabellen üben', lForms:'Formen', pParse:c => 'Bestimmen Sie die Form · ' + c, pMake:'Wählen Sie die richtige Form', pronTitle:'Byzantinische Aussprache',
+  drill:'Formen üben', toc:'Inhalt', tocBase:'Grundtabellen', toTop:'↑ Zum Inhalt', drillAll:'Alle Tabellen üben', lForms:'Formen', pParse:c => 'Bestimmen Sie die Form · ' + c, pMake:'Wählen Sie die richtige Form', pronTitle:'Byzantinische Aussprache',
   pronText:'Die mittelalterliche Lesung stimmt mit dem Neugriechischen überein: β = [v], η = ι = υ = [i], αι = [e], Spiritus sind stumm. Umschrift in den Lektionen: dh = [ð], gh = [ɣ], th = [θ], ch = [x], y = [j].',
   tLetters:'Buchstaben', tDiph:'Verbindungen und Zeichen', hLetter:'Buchstabe', hName:'Name', hSound:'Laut', hExample:'Beispiel', hComb:'Verbindung',
   closeLesson:'Lektion schließen', tasks:n => n + (n === 1 ? ' Aufgabe' : ' Aufgaben'), begin:'Starten', dontKnow:'Weiß ich nicht', check:'Prüfen', next2:'Weiter',
@@ -4282,13 +4292,24 @@ function tbl(cap, head, rows, rowHead){
     rows.map(r => '<tr>' + r.map((c, i) => i === 0 && rowHead ? '<th scope="row">' + esc(T(c)) + '</th>' : '<td>' + cell(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
 }
 function renderTables(){
-  let h = '<header class="intro-h"><h1>' + esc(U('tablesTitle')) + '</h1><p>' + esc(U('tablesIntro')) + '</p><div class="tdrill"><button class="btn" type="button" data-drill="all">' + esc(U('drillAll')) + '</button></div></header>';
-  h += '<section class="tsec"><h2>' + esc(U('pronTitle')) + '</h2><p>' + rich(U('pronText')) + '</p><div class="tgrid">' +
-    tbl(U('tLetters'), [U('hLetter'), U('hName'), U('hSound'), U('hExample')], PRON) + tbl(U('tDiph'), [U('hComb'), U('hSound'), U('hExample')], DIPH) + '</div></section>';
+  /* table of contents: buttons, not #anchors, because the hash is the tab route */
+  const groups = [{title:U('tocBase'), items:[['ts-pron', U('pronTitle')]]}];
+  TABLES.forEach((s, i) => {
+    if (s.part) groups.push({title:T(s.part.title), label:T(s.part.label), items:[]});
+    groups[groups.length - 1].items.push(['ts-' + i, T(s.title)]);
+  });
+  const toc = '<nav class="toc" id="toc" aria-label="' + esc(U('toc')) + '"><p class="label">' + esc(U('toc')) + '</p>' +
+    groups.map(g => '<div class="toc-g"><p class="toc-h">' + (g.label ? '<span class="label">' + esc(g.label) + '</span>' : '') + esc(g.title) + '</p><ol>' +
+      g.items.map(it => '<li><button type="button" data-toc="' + it[0] + '"><span>' + rich(it[1]) + '</span></button></li>').join('') + '</ol></div>').join('') + '</nav>';
+  const foot = (i, drill) => '<div class="tdrill">' + (drill ? '<button class="btn ghost sm" type="button" data-drill="' + i + '">' + esc(U('drill')) + '</button>' : '') +
+    '<button class="btn ghost sm" type="button" data-toc="toc">' + esc(U('toTop')) + '</button></div>';
+  let h = '<header class="intro-h"><h1>' + esc(U('tablesTitle')) + '</h1><p>' + esc(U('tablesIntro')) + '</p><div class="tdrill"><button class="btn" type="button" data-drill="all">' + esc(U('drillAll')) + '</button></div></header>' + toc;
+  h += '<section class="tsec" id="ts-pron"><h2>' + esc(U('pronTitle')) + '</h2><p>' + rich(U('pronText')) + '</p><div class="tgrid">' +
+    tbl(U('tLetters'), [U('hLetter'), U('hName'), U('hSound'), U('hExample')], PRON) + tbl(U('tDiph'), [U('hComb'), U('hSound'), U('hExample')], DIPH) + '</div>' + foot(null, false) + '</section>';
   TABLES.forEach((s, i) => {
     if (s.part) h += '<header class="tpart"><p class="label">' + esc(T(s.part.label)) + '</p><h2>' + esc(T(s.part.title)) + '</h2><p>' + rich(T(s.part.src)) + '</p></header>';
-    h += '<section class="tsec"><h2>' + rich(T(s.title)) + '</h2>' + (s.note ? '<p>' + rich(T(s.note)) + '</p>' : '') + '<div class="tgrid">' + s.t.map(t => tbl(t.cap, t.head, t.rows)).join('') + '</div>' +
-      (drillCells(s).length >= 4 ? '<div class="tdrill"><button class="btn ghost sm" type="button" data-drill="' + i + '">' + esc(U('drill')) + '</button></div>' : '') + '</section>';
+    h += '<section class="tsec" id="ts-' + i + '"><h2>' + rich(T(s.title)) + '</h2>' + (s.note ? '<p>' + rich(T(s.note)) + '</p>' : '') + '<div class="tgrid">' + s.t.map(t => tbl(t.cap, t.head, t.rows)).join('') + '</div>' +
+      foot(i, drillCells(s).length >= 4) + '</section>';
   });
   main.innerHTML = h;
 }
@@ -4572,6 +4593,7 @@ main.addEventListener('click', e => {
   }
   if (t.dataset.practice) return startText(t.dataset.practice);
   if (t.dataset.drill) return startDrill(t.dataset.drill);
+  if (t.dataset.toc){ const el = document.getElementById(t.dataset.toc); if (el) el.scrollIntoView({behavior:reduced() ? 'auto' : 'smooth', block:'start'}); return; }
   if (t.classList.contains('w')) return openGloss(t);
 });
 document.addEventListener('keydown', e => {
