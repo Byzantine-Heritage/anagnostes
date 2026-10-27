@@ -172,6 +172,8 @@ p{margin:0}
 .intro-h .tdrill{margin-top:16px}
 .tgrid{display:flex;flex-wrap:wrap;gap:24px 36px;margin-top:16px}
 .tbox{overflow-x:auto;max-width:100%}
+.tgrid.tc{justify-content:center}
+.tgrid.tc .tbox caption{text-align:center}
 .tbox caption{text-align:left;font-family:var(--greek);font-weight:700;font-size:var(--fs-l);padding-bottom:6px}
 table.par{border-collapse:collapse;font-variant-numeric:tabular-nums}
 table.par th,table.par td{padding:6px 14px 6px 0;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
@@ -4304,11 +4306,11 @@ function renderTables(){
   const foot = (i, drill) => '<div class="tdrill">' + (drill ? '<button class="btn ghost sm" type="button" data-drill="' + i + '">' + esc(U('drill')) + '</button>' : '') +
     '<button class="btn ghost sm" type="button" data-toc="toc">' + esc(U('toTop')) + '</button></div>';
   let h = '<header class="intro-h"><h1>' + esc(U('tablesTitle')) + '</h1><p>' + esc(U('tablesIntro')) + '</p><div class="tdrill"><button class="btn" type="button" data-drill="all">' + esc(U('drillAll')) + '</button></div></header>' + toc;
-  h += '<section class="tsec" id="ts-pron"><h2>' + esc(U('pronTitle')) + '</h2><p>' + rich(U('pronText')) + '</p><div class="tgrid">' +
+  h += '<section class="tsec" id="ts-pron"><h2>' + esc(U('pronTitle')) + '</h2><p>' + rich(U('pronText')) + '</p><div class="tgrid tc">' +
     tbl(U('tLetters'), [U('hLetter'), U('hName'), U('hSound'), U('hExample')], PRON) + tbl(U('tDiph'), [U('hComb'), U('hSound'), U('hExample')], DIPH) + '</div>' + foot(null, false) + '</section>';
   TABLES.forEach((s, i) => {
     if (s.part) h += '<header class="tpart"><p class="label">' + esc(T(s.part.label)) + '</p><h2>' + esc(T(s.part.title)) + '</h2><p>' + rich(T(s.part.src)) + '</p></header>';
-    h += '<section class="tsec" id="ts-' + i + '"><h2>' + rich(T(s.title)) + '</h2>' + (s.note ? '<p>' + rich(T(s.note)) + '</p>' : '') + '<div class="tgrid">' + s.t.map(t => tbl(t.cap, t.head, t.rows)).join('') + '</div>' +
+    h += '<section class="tsec" id="ts-' + i + '"><h2>' + rich(T(s.title)) + '</h2>' + (s.note ? '<p>' + rich(T(s.note)) + '</p>' : '') + '<div class="tgrid tc">' + s.t.map(t => tbl(t.cap, t.head, t.rows)).join('') + '</div>' +
       foot(i, drillCells(s).length >= 4) + '</section>';
   });
   main.innerHTML = h;
